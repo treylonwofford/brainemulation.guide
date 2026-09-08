@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BrainEmulation Hub</title>
+  <meta name="description"
+    content="A simple hub for whole brain emulation and mind uploading: what to read, who's working on it, and how to get involved.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #FFFFFF;
+      --ink: #1A1F2B;
+      --muted: #5B6472;
+      --line: #E3E6EB;
+      --tint: #F3F5F8;
+      --blue: #1F4FD8;
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "Public Sans", system-ui, sans-serif;
+      font-size: 1.0625rem;
+      line-height: 1.6
+    }
+
+    a {
+      color: var(--blue)
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--blue);
+      outline-offset: 3px
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-weight: 700;
+      line-height: 1.15;
+      margin: 0
+    }
+
+    h1 {
+      font-size: clamp(2rem, 5vw, 3rem)
+    }
+
+    h2 {
+      font-size: 1.15rem;
+      color: var(--muted);
+      font-weight: 500
+    }
+
+    h3 {
+      font-size: 1.5rem;
+      margin: .25rem 0 .5rem
+    }
+
+    p {
+      margin: 0 0 1rem;
+      max-width: 60ch
+    }
+
+    .wrap {
+      max-width: 52rem;
+      margin: 0 auto;
+      padding: 0 1.25rem
+    }
+
+    nav {
+      border-bottom: 1px solid var(--line)
+    }
+
+    nav .wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 3.75rem;
+      gap: 1rem
+    }
+
+    nav .brand {
+      font-weight: 700;
+      color: var(--ink);
+      text-decoration: none
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      background: var(--bg);
+      z-index: 5
+    }
+
+    nav .wrap {
+      flex-wrap: wrap;
+      height: auto;
+      min-height: 3.75rem;
+      padding-top: .5rem;
+      padding-bottom: .5rem
+    }
+
+    ul.tabs {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      gap: .25rem;
+      flex-wrap: wrap
+    }
+
+    ul.tabs a {
+      display: block;
+      padding: .4rem .7rem;
+      border-radius: 999px;
+      font-size: .92rem;
+      color: var(--muted);
+      text-decoration: none
+    }
+
+    ul.tabs a:hover {
+      background: var(--tint);
+      color: var(--ink)
+    }
+
+    ul.tabs a.on {
+      background: var(--ink);
+      color: #fff
+    }
+
+    section {
+      scroll-margin-top: 5.5rem
+    }
+
+    header {
+      padding: 4rem 0 2.5rem
+    }
+
+    header p.lede {
+      font-size: 1.25rem;
+      color: var(--muted)
+    }
+
+    .status {
+      background: var(--tint);
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      margin-top: 1.5rem;
+      max-width: 60ch
+    }
+
+    .status p {
+      margin: 0
+    }
+
+    .block {
+      padding: 2.75rem 0;
+      border-top: 1px solid var(--line)
+    }
+
+    .block p {
+      color: var(--muted)
+    }
+
+    .pick {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 1.25rem;
+      margin: 1.25rem 0;
+      max-width: 60ch
+    }
+
+    .pick .tag {
+      font-size: .85rem;
+      color: var(--muted);
+      margin-bottom: .35rem
+    }
+
+    .pick strong {
+      display: block;
+      font-size: 1.1rem;
+      margin-bottom: .25rem
+    }
+
+    .pick p {
+      margin: 0 0 .6rem
+    }
+
+    .pick a.go {
+      font-weight: 500
+    }
+
+    ul.plain {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      max-width: 60ch
+    }
+
+    ul.plain li {
+      padding: .5rem 0;
+      border-top: 1px solid var(--line)
+    }
+
+    ul.plain li:first-child {
+      border-top: 0
+    }
+
+    ul.plain span {
+      color: var(--muted)
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 2rem 0 3rem;
+      font-size: .92rem;
+      color: var(--muted)
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <div class="wrap">
+      <a class="brand" href="#top">BrainEmulation Hub</a>
+      <ul class="tabs">
+        <li><a href="#learn">Learn</a></li>
+        <li><a href="#community">Communities</a></li>
+        <li><a href="#events">Events</a></li>
+        <li><a href="#data">Datasets</a></li>
+        <li><a href="#news">Newsletters</a></li>
+        <li><a href="#programs">Programs</a></li>
+        <li><a href="#help">Help out</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header id="top">
+    <div class="wrap">
+      <h1>Find your place in brain emulation research</h1>
+      <p class="lede">A simple hub for whole brain emulation and mind uploading: what to read, who’s working on it, and
+        how to get involved.</p>
+      <p>Whole brain emulation means scanning a brain in enough detail to run a working copy of it on a computer. It is
+        a small field, with fewer than a few thousand people working on anything close to it, so a few good starting
+        points go a long way.</p>
+      <div class="status">
+        <p><strong>Where things stand (2026):</strong> the fruit fly’s full wiring diagram is done, the larval zebrafish
+          is close, and one cubic millimetre each of mouse and human cortex has been mapped. Nobody has yet emulated
+          even a worm in a way everyone agrees works.</p>
+      </div>
+    </div>
+  </header>
+
+  <section class="block" id="learn">
+    <div class="wrap">
+      <h2>Learn</h2>
+      <h3>Understand what brain emulation is and why it might matter</h3>
+      <p>Two short reads and one long one cover most of the field.</p>
+      <div class="pick">
+        <div class="tag">Best first read</div>
+        <strong>80,000 Hours: Whole brain emulation</strong>
+        <p>A short, balanced introduction: the upside, the risks, and why almost nobody works on it full time.</p>
+        <a class="go" href="https://80000hours.org/problem-profiles/whole-brain-emulation/">Read the profile</a>
+      </div>
+      <ul class="plain">
+        <li><a href="https://press.asimov.com/articles/brains">Building Brains on a Computer</a> <span>— Asimov Press,
+            2026. Where the fly, zebrafish and mouse projects are.</span></li>
+        <li><a href="https://arxiv.org/abs/2510.15745">State of Brain Emulation Report 2025</a> <span>— the full
+            overview of the field, written to bring new people in.</span></li>
+        <li><a href="https://www.cold-takes.com/digital-people-faq/">Digital People FAQ</a> <span>— what a world with
+            emulated minds might look like.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="block" id="community">
+    <div class="wrap">
+      <h2>Communities</h2>
+      <h3>Meet the people who work on this</h3>
+      <p>There is one organisation dedicated to whole brain emulation end to end, and it welcomes newcomers.</p>
+      <div class="pick">
+        <div class="tag">Main community</div>
+        <strong>Carboncopies Foundation</strong>
+        <p>Research and education nonprofit. Runs open journal clubs, workshops, and a newsletter.</p>
+        <a class="go" href="https://carboncopies.org">Visit Carboncopies</a>
+      </div>
+      <ul class="plain">
+        <li><a href="https://forum.effectivealtruism.org/topics/whole-brain-emulation">EA Forum: whole brain
+            emulation</a> <span>— essays, debates and reading lists.</span></li>
+        <li><a href="https://www.lesswrong.com/w/whole-brain-emulation">LessWrong wiki</a> <span>— short overview and
+            history.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="block" id="events">
+    <div class="wrap">
+      <h2>Events</h2>
+      <h3>Workshops and talks, online and in person</h3>
+      <div class="pick">
+        <div class="tag">Main workshop</div>
+        <strong>Foresight Institute: Whole Brain Emulation workshop</strong>
+        <p>Annual, invite-based, with subsidised places. Past reports are public and show who is in the room.</p>
+        <a class="go" href="https://foresight.org">Visit Foresight</a>
+      </div>
+      <ul class="plain">
+        <li>Carboncopies journal clubs <span>— regular, online, open to anyone. Dates in their newsletter.</span></li>
+        <li>Foresight neurotech salons <span>— evening talks in San Francisco.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="block" id="data">
+    <div class="wrap">
+      <h2>Datasets</h2>
+      <h3>Public brain datasets you can explore today</h3>
+      <p>Predicting activity from wiring is an open problem you can try on a laptop.</p>
+      <ul class="plain">
+        <li><a href="https://flywire.ai">FlyWire</a> <span>— the complete fruit fly connectome.</span></li>
+        <li><a href="https://www.microns-explorer.org/">MICrONS</a> <span>— a cubic millimetre of mouse cortex,
+            structure plus activity.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="block" id="news">
+    <div class="wrap">
+      <h2>Newsletters</h2>
+      <h3>Newsletters and reports</h3>
+      <ul class="plain">
+        <li><a href="https://carboncopies.org/Newsletter/December2025">Carboncopies Connect</a> <span>— the field’s
+            newsletter.</span></li>
+        <li><a href="https://brainemulation.mxschons.com/">State of Brain Emulation</a> <span>— the yearly
+            report.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="block" id="programs">
+    <div class="wrap">
+      <h2>Programs</h2>
+      <h3>Fellowships that accept brain emulation projects</h3>
+      <p>No program is dedicated to WBE yet. These broader ones have taken related work, especially on strategy and
+        safety.</p>
+      <ul class="plain">
+        <li><a href="https://www.matsprogram.org/">MATS</a> <span>— AI safety research program.</span></li>
+        <li><a href="https://foresight.org/engage/fellowship/">Foresight fellowships</a> <span>— neurotech track.</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="block" id="help">
+    <div class="wrap">
+      <h2>Help out</h2>
+      <h3>This site is new and will have gaps</h3>
+      <p>If something is missing, wrong or out of date, tell us. If you want to help maintain it, get in touch.</p>
+      <a href="mailto:treylonwofford2@gmail.com">Suggest a correction</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">Maintained by volunteers. Not affiliated with any organisation listed.</div>
+  </footer>
+
+  <script>
+    const links = [...document.querySelectorAll('ul.tabs a')];
+    const secs = links.map(a => document.querySelector(a.getAttribute('href')));
+    const io = new IntersectionObserver(es => {
+      es.forEach(e => { if (e.isIntersecting) { links.forEach(l => l.classList.toggle('on', l.getAttribute('href') === '#' + e.target.id)); } });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+    secs.forEach(sec => sec && io.observe(sec));
+  </script>
+</body>
+
+</html>
